@@ -39,13 +39,7 @@ public class Identifier implements IdentifierInterface {
 	@Override
 	public boolean equals(Identifier identifier) {
 		return getString().equals(identifier.getString());
-		/*
-		 * for (int i = 0; i < identifier.getLength(); i++) { if
-		 * (identifier.sb.charAt(i) != sb.charAt(i) && identifier.getLength() ==
-		 * getLength()) { return false; } }
-		 * 
-		 * return false;
-		 */
+
 	}
 
 	@Override
@@ -53,14 +47,5 @@ public class Identifier implements IdentifierInterface {
 		// TODO Auto-generated method stub
 		
 	}
-
-	/*
-	 * @Override public IdentifierInterface copy() { Identifier copy = new
-	 * Identifier();
-	 * 
-	 * for (int i = 0; i < copy.getLength(); i++) { sb.append(copy.sb.charAt(i)); }
-	 * 
-	 * return copy; }
-	 */
 
 }
