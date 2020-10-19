@@ -4,10 +4,6 @@ import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-/* As explained during the lecture your program for assignment 1 will 
-   have 4 nested iterations. The following structured design shows 
-   how you could deal with the first 2 of these 4 iterations.
- */
 public class Main {
 	static final int MAX_NUMBER_OF_ELEMENTS = 10;
 
@@ -21,7 +17,7 @@ public class Main {
 		do {
 			out.printf("%s", question);
 			if (!input.hasNextLine()) {
-				out.printf("\n"); // otherwise line with ^D will be overwritten
+				out.printf("\n"); 
 				return false;
 			}
 		} while (!inputContainsCorrectSet(input, set));
@@ -51,7 +47,6 @@ public class Main {
 				nextChar(lineScanner);
 			}
 
-			// Add identifier to the set if the identifier has the correct properties.
 			Identifier identifier = readIdentifier(lineScanner);
 			if (identifier == null) {
 				set.init();
@@ -61,14 +56,12 @@ public class Main {
 			set.add(identifier);
 			count++;
 
-			// Check if maximum number of identifiers has been exceeded.
 			if (count > MAX_NUMBER_OF_ELEMENTS) {
 				out.printf("Maximum input of 10 identifiers exceeded. \n");
 				return false;
 			}
 		}
 
-		// Check if the set is closed correctly.
 		if (!nextCharIs(lineScanner, '}')) {
 			set.init();
 			out.printf("Sets should close with '}' \n");
@@ -86,12 +79,10 @@ public class Main {
 	}
 
 	private Identifier readIdentifier(Scanner input) {
-		// Check if the identifier's first character is a letter.
 		if (!nextCharIsLetter(input)) {
 			return null;
 		}
 
-		// Check if the input is alphanumeric.
 		Identifier identifier = new Identifier(nextChar(input));
 		while (nextCharIsDigit(input) || nextCharIsLetter(input)) {
 			identifier.add(nextChar(input));
@@ -132,14 +123,12 @@ public class Main {
 	}
 
 	private void calculateAndGiveOutput(Set set1, Set set2) {
-		// Performs operations on the sets.
 		SetInterface difference = set1.difference(set2);
 		SetInterface intersection = set1.intersection(set2);
 		;
 		SetInterface union = set1.union(set2);
 		SetInterface symmetricDifference = set1.symmetricDifference(set2);
 
-		// Prints the sets.
 		out.printf("The difference is: %s\n", setToString(difference));
 		out.printf("The intersection is: %s\n", setToString(intersection));
 		out.printf("The union is: %s\n", setToString(union));
